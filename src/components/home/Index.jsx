@@ -51,8 +51,9 @@ export default function Index() {
       <ReelsSection/>
 
 
-<CoursePricing/>
+
       <Divider />
+      <CoursePricing/>
       <Divider />
 
       
