@@ -7,7 +7,9 @@ import Highlights from "./Highlights";
 import Portfolio from "./Portfolio";
 import Divider from "./Divider";
 import ReelsSection from "../gallery/ReelsSection";
+
 import { setSEO } from "../../utils/seo";
+import CoursePricing from "../course/CoursePricing";
 
 export default function Index() {
   useEffect(() => {
@@ -43,9 +45,16 @@ export default function Index() {
       <CTA />
       <Divider />
       <Highlights />
-      <Divider />
+       <Divider />
+
+      
       <ReelsSection/>
 
+
+
+      <Divider />
+
+      <CoursePricing/>
       <Divider />
 
       <Portfolio />
