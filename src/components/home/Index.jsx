@@ -51,11 +51,11 @@ export default function Index() {
       <ReelsSection/>
 
 
-
+<CoursePricing/>
+      <Divider />
       <Divider />
 
-      <CoursePricing/>
-      <Divider />
+      
 
       <Portfolio />
       
