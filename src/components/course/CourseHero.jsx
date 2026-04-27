@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
-import courseImg from "../../assets/a1.jpeg";
+import courseImg from "../../assets/za-13.jpeg";
 
 export default function CourseHero() {
   return (
