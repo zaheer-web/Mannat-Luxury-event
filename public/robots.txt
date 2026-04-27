@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block admin panel
+Disallow: /admin
+
+# Sitemap
+Sitemap: https://yourwebsite.com/sitemap.xml
