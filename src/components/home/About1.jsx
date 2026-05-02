@@ -112,7 +112,7 @@ export default function About1() {
 
             <div className="text-center">
               <h3 className="text-3xl text-yellow-400"><Counter end={4}/>+</h3>
-              <p className="text-gray-400 text-sm">Cities Covered</p>
+              <p className="text-gray-400 text-sm">State Covered</p>
             </div>
           </div>
 
