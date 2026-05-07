@@ -53,7 +53,10 @@ export default function AllPhotos() {
   };
 
   return (
-    <div className="min-h-screen bg-black px-4 sm:px-10 py-28">
+    <div
+  id="gallery"
+  className="min-h-screen bg-black px-4 sm:px-10 py-28"
+>
 
       {/* 💎 HEADING */}
       <h1 className="text-3xl sm:text-5xl font-extrabold text-center text-white mb-12">

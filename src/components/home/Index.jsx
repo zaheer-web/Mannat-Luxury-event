@@ -43,7 +43,7 @@ export default function Index() {
       <Service />
       <Divider />
       <CTA />
-      <Divider />
+      
       <Highlights />
        <Divider />
 
