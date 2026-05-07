@@ -9,7 +9,7 @@ function ServiceOne() {
   return (
     <div className="relative h-[90vh] sm:h-screen w-full overflow-hidden bg-black">
 
-      {/* 💎 BACKGROUND IMAGE (FIXED) */}
+      {/* 💎 BACKGROUND IMAGE */}
       <motion.img
         src={img}
         className="absolute w-full h-full object-cover"
@@ -19,11 +19,11 @@ function ServiceOne() {
         alt="service"
       />
 
-      {/* 💎 LIGHT OVERLAY (SAME AS HERO) */}
+      {/* 💎 OVERLAYS */}
       <div className="absolute inset-0 bg-black/40 z-10" />
       <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-black/40 z-10" />
 
-      {/* 🎉 CONFETTI (ADDED SAME EFFECT) */}
+      {/* 🎉 CONFETTI */}
       <div className="absolute left-0 top-0 z-20 pointer-events-none">
         {[...Array(15)].map((_, i) => (
           <motion.div
@@ -40,7 +40,11 @@ function ServiceOne() {
               repeat: Infinity,
             }}
             className={`absolute w-2 h-2 ${
-              i % 3 === 0 ? "bg-yellow-400" : i % 3 === 1 ? "bg-pink-400" : "bg-white"
+              i % 3 === 0
+                ? "bg-yellow-400"
+                : i % 3 === 1
+                ? "bg-pink-400"
+                : "bg-white"
             }`}
           />
         ))}
@@ -96,45 +100,57 @@ function ServiceOne() {
       </div>
 
       {/* 💎 CONTENT */}
-      <div className="absolute inset-0 flex items-center justify-center text-center z-30 px-6">
+      <div className="absolute inset-0 flex items-center z-30 md:mt-60 mt-80">
+
         <motion.div
-          initial={{ y: 80, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          initial={{ x: -100, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl text-white"
+          className="w-full px-4 sm:px-8 md:px-14 lg:px-20"
         >
 
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-            Balloon Decoration{" "}
-            <span className="text-yellow-400">Services 🎈</span>
-          </h1>
+          <div className="max-w-3xl text-white text-left">
 
-          <p className="mt-6 text-lg text-gray-200">
-            Transform your celebrations into unforgettable moments with our
-            creative balloon decoration and event styling services.
-          </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight">
+              Balloon Decoration{" "}
+              <span className="text-yellow-400">
+                Services 🎈
+              </span>
+            </h1>
 
-          <div className="mt-8 flex flex-wrap gap-4 justify-center">
+            <p className="mt-6 text-base sm:text-lg text-gray-200 max-w-2xl leading-relaxed">
+              Transform your celebrations into unforgettable moments with our
+              creative balloon decoration and event styling services.
+            </p>
 
-            <a
-              href="https://wa.me/917888735541"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="bg-yellow-500 text-black px-8 py-3 rounded-xl font-bold 
-              hover:bg-yellow-400 transition shadow-lg shadow-yellow-500/30">
-                Book Now
-              </button>
-            </a>
+            {/* BUTTONS */}
+            <div className="mt-8 flex flex-wrap gap-4">
 
-            <Link to="/our-gallery">
-  <button
-    className="border border-yellow-400 px-8 py-3 rounded-xl text-yellow-400 
-    hover:bg-yellow-400 hover:text-black transition"
-  >
-    View Gallery
-  </button>
-</Link>
+              <a
+                href="https://wa.me/917888735541"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button
+                  className="bg-yellow-500 text-black px-8 py-3 rounded-xl font-bold 
+                  hover:bg-yellow-400 transition duration-300 
+                  shadow-lg shadow-yellow-500/30 hover:scale-105"
+                >
+                  Book Now
+                </button>
+              </a>
+
+              <Link to="/our-gallery">
+                <button
+                  className="border border-yellow-400 px-8 py-3 rounded-xl 
+                  text-yellow-400 hover:bg-yellow-400 hover:text-black 
+                  transition duration-300 hover:scale-105"
+                >
+                  View Gallery
+                </button>
+              </Link>
+
+            </div>
 
           </div>
 

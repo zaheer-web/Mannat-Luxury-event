@@ -44,7 +44,7 @@ export default function CourseHero() {
       </div>
 
       {/* 💎 CONTENT */}
-      <div className="absolute inset-0 flex items-end md:items-center justify-start z-30 px-5 sm:px-8 md:px-16 pb-10 md:pb-0">
+      <div className="absolute inset-0 flex items-end md:items-center justify-start z-30 px-5 sm:px-8 md:px-16 pb-10 md:pb-0 md:mt-50 mt-40">
 
         <motion.div
           initial={{ x: -60, opacity: 0 }}

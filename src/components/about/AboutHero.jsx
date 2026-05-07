@@ -53,7 +53,7 @@ export default function AboutHero() {
       </div>
 
       {/* 💎 CONTENT */}
-      <div className="relative z-40 flex items-center h-full px-6 sm:px-16">
+      <div className="relative z-40 flex items-center h-full px-6 sm:px-16 md:mt-50 mt-40">
 
         <motion.div
           initial={{ x: -80, opacity: 0 }}

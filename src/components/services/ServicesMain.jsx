@@ -1,29 +1,17 @@
 import React from "react";
 import Divider from "../../components/home/Divider";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // ✅ add this
 
 // Images
 import img1 from "../../assets/ah-2.avif";
-// import img2 from "../../assets/b-2.jpg";
 import img2 from "../../assets/za-10.jpeg";
-
 import img3 from "../../assets/ad-1.jpg";
-// import img4 from "../../assets/hd-1.webp";
 import img4 from "../../assets/za-7.jpeg";
-
-// import img5 from "../../assets/ann-1.webp";
 import img5 from "../../assets/za-12.jpeg";
-
-// import img6 from "../../assets/br-1.jpg";
 import img6 from "../../assets/za-9.jpeg";
-
-
 import img8 from "../../assets/ba-2.webp";
-// import img9 from "../../assets/p-2.jpg";
 import img9 from "../../assets/za-26.jpeg";
-
-
-
 
 const services = [
   { title: "Balloon Decoration 🎈", img: img1 },
@@ -31,13 +19,15 @@ const services = [
   { title: "Anniversary Decoration 💛", img: img3 },
   { title: "Haldi Decoration 🌼", img: img4 },
   { title: "All Type Decoration ✨", img: img5 },
-  
   { title: "Couple Entry 💑", img: img6 },
   { title: "Birthday Surprise 🎁", img: img8 },
   { title: "Proposal Decoration 💍", img: img9 },
 ];
 
 export default function ServicesMain() {
+
+  const navigate = useNavigate(); // ✅ add this
+
   return (
     <>
       <section className="bg-black py-28 px-6 text-white relative overflow-hidden">
@@ -92,6 +82,7 @@ export default function ServicesMain() {
               transition={{ duration: 0.6 }}
               className="group bg-[#111] rounded-3xl overflow-hidden shadow-xl border border-yellow-500/10 hover:border-yellow-500 transition"
             >
+
               {/* IMAGE */}
               <div className="overflow-hidden h-[300px]">
                 <img
@@ -106,8 +97,12 @@ export default function ServicesMain() {
                   {service.title}
                 </h3>
 
-                <button className="mt-3 px-6 py-2 border border-yellow-500 text-yellow-400 rounded-full 
-                hover:bg-yellow-500 hover:text-black transition shadow-md hover:shadow-yellow-500/30">
+                {/* ✅ BUTTON */}
+                <button
+                  onClick={() => navigate("/our-gallery")} // ✅ gallery page open
+                  className="mt-3 px-6 py-2 border border-yellow-500 text-yellow-400 rounded-full 
+                  hover:bg-yellow-500 hover:text-black transition shadow-md hover:shadow-yellow-500/30"
+                >
                   View Gallery →
                 </button>
               </div>

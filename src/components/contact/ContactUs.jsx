@@ -123,7 +123,7 @@ export default function ContactUs() {
         <div className="absolute inset-0 bg-black/40 z-10" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
 
-        <div className="relative z-30 flex items-center h-full px-6 sm:px-16">
+        <div className="relative z-30 flex items-center h-full px-6 sm:px-16 md:mt-50 mt-40">
           <motion.div className="text-white max-w-2xl">
             <h1 className="text-4xl md:text-6xl font-extrabold">
               Contact <span className="text-yellow-400">Us</span>

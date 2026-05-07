@@ -96,7 +96,7 @@ export default function GalleryHero() {
       </div>
 
       {/* 💎 CONTENT */}
-      <div className="relative z-30 flex items-center h-full px-6 sm:px-16">
+      <div className="relative z-30 flex items-center h-full px-6 sm:px-16 md:mt-50 mt-40">
         <motion.div
           initial={{ x: -80, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
