@@ -43,7 +43,7 @@ export default function CTA() {
       {/* ───────── OVERLAYS ───────── */}
       <div className="absolute inset-0 bg-black/65" />
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/75 to-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/25 to-black/20" />
 
       <div className="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-yellow-950/30 to-transparent" />
 
@@ -108,7 +108,7 @@ export default function CTA() {
             <br />
 
             <span
-              className="text-[1.6rem] text-white/55 sm:text-3xl lg:text-4xl"
+              className="text-[1.6rem] text-white sm:text-3xl lg:text-4xl"
               style={{
                 fontFamily: "'Cormorant Garamond', serif",
                 fontWeight: 600,
@@ -140,7 +140,7 @@ export default function CTA() {
               delay: 0.25,
               duration: 0.6,
             }}
-            className="mt-7 max-w-xl text-sm leading-7 text-white/65 sm:text-base"
+            className="mt-7 max-w-xl text-sm leading-7 text-white/75 sm:text-base"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 400,

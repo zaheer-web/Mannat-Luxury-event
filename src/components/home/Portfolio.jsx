@@ -56,11 +56,103 @@ export default function Portfolio() {
   return (
     <section className="relative overflow-hidden bg-[#060606] py-24">
       {/* ───────── PREMIUM BG ───────── */}
-      <div className="absolute inset-0">
-        {/* Glow */}
-        <div className="absolute left-0 top-0 h-[350px] w-[450px] rounded-full bg-yellow-500/10 blur-[140px]" />
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Animated Grid */}
+        <motion.div
+          animate={{
+            backgroundPosition: [
+              "0px 0px",
+              "120px 120px",
+            ],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "linear",
+          }}
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,215,0,0.15) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,215,0,0.15) 1px, transparent 1px)
+            `,
+            backgroundSize: "80px 80px",
+          }}
+        />
 
-        <div className="absolute bottom-0 right-0 h-[280px] w-[280px] rounded-full bg-yellow-500/5 blur-[120px]" />
+        {/* Animated Glow 1 */}
+        <motion.div
+          animate={{
+            x: [0, 60, 0],
+            y: [0, 40, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute left-[-100px] top-[-80px] h-[420px] w-[420px] rounded-full bg-yellow-500/10 blur-[140px]"
+        />
+
+        {/* Animated Glow 2 */}
+        <motion.div
+          animate={{
+            x: [0, -50, 0],
+            y: [0, -40, 0],
+            scale: [1, 1.15, 1],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-[-120px] right-[-80px] h-[350px] w-[350px] rounded-full bg-yellow-500/10 blur-[120px]"
+        />
+
+        {/* Floating Particles */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{
+              opacity: 0,
+              y: 100,
+            }}
+            animate={{
+              opacity: [0, 1, 0],
+              y: [-20, -500],
+              x: [0, i % 2 === 0 ? 40 : -40],
+            }}
+            transition={{
+              duration: 7 + i * 0.4,
+              repeat: Infinity,
+              delay: i * 0.5,
+              ease: "easeInOut",
+            }}
+            className="absolute bottom-0"
+            style={{
+              left: `${5 + i * 6}%`,
+            }}
+          >
+            <Sparkles
+              size={12}
+              className="text-yellow-400/50"
+            />
+          </motion.div>
+        ))}
+
+        {/* Moving Gradient */}
+        <motion.div
+          animate={{
+            opacity: [0.2, 0.35, 0.2],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(250,204,21,0.08),transparent_60%)]"
+        />
       </div>
 
       {/* ───────── CONTAINER ───────── */}
@@ -70,7 +162,10 @@ export default function Portfolio() {
           {/* LABEL */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            whileInView={{
+              opacity: 1,
+              x: 0,
+            }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
             className="mb-5 flex items-center gap-3"
@@ -91,12 +186,16 @@ export default function Portfolio() {
           {/* HEADING */}
           <motion.h2
             initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
             className="max-w-4xl text-[2.8rem] leading-[0.95] text-white sm:text-5xl lg:text-7xl"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily:
+                "'Cormorant Garamond', serif",
               fontWeight: 700,
             }}
           >
@@ -107,42 +206,49 @@ export default function Portfolio() {
             <span
               className="text-yellow-400"
               style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily:
+                  "'Playfair Display', serif",
                 fontWeight: 700,
               }}
             >
-              Elegance &
+              Elegance &{" "}
+              <span className="text-white">
+                Luxury
+              </span>
             </span>
-
-            <br />
-
-            Luxury
           </motion.h2>
 
           {/* DESCRIPTION */}
           <motion.p
             initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
             viewport={{ once: true }}
             transition={{
               duration: 0.6,
               delay: 0.2,
             }}
-            className="mt-6 max-w-2xl text-sm leading-8 text-white/55 sm:text-base"
+            className="mt-6 max-w-2xl text-sm leading-8 text-white/85 sm:text-base"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 400,
             }}
           >
-            Discover our premium balloon decorations, luxury event
-            styling and unforgettable celebration setups designed
-            with creativity and perfection.
+            Discover our premium balloon
+            decorations, luxury event styling and
+            unforgettable celebration setups
+            designed with creativity and perfection.
           </motion.p>
 
           {/* BUTTON */}
           <motion.button
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
             viewport={{ once: true }}
             transition={{
               duration: 0.5,
@@ -242,20 +348,28 @@ export default function Portfolio() {
                   opacity: 0,
                   scale: 0.9,
                 }}
-                transition={{ duration: 0.35 }}
+                transition={{
+                  duration: 0.35,
+                }}
                 className="overflow-hidden rounded-[30px] border border-yellow-500/20 shadow-[0_25px_100px_rgba(0,0,0,0.8)]"
               >
                 {galleryItems[currentIndex].type ===
                 "video" ? (
                   <video
-                    src={galleryItems[currentIndex].file_url}
+                    src={
+                      galleryItems[currentIndex]
+                        .file_url
+                    }
                     controls
                     autoPlay
                     className="max-h-[85vh] max-w-[92vw] object-cover"
                   />
                 ) : (
                   <img
-                    src={galleryItems[currentIndex].file_url}
+                    src={
+                      galleryItems[currentIndex]
+                        .file_url
+                    }
                     alt=""
                     className="max-h-[85vh] max-w-[92vw] object-cover"
                   />
@@ -356,7 +470,8 @@ function Card({ item, onClick, index }) {
           <h3
             className="mt-2 text-2xl text-white transition-all duration-300 group-hover:text-yellow-400"
             style={{
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily:
+                "'Cormorant Garamond', serif",
               fontWeight: 700,
             }}
           >

@@ -127,7 +127,7 @@ export default function Highlights() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="max-w-sm text-sm leading-7 text-white/50 lg:text-right"
+            className="max-w-sm text-sm leading-7 text-white/80 lg:text-right"
             style={{
               fontFamily: "'Inter', sans-serif",
               fontWeight: 400,
