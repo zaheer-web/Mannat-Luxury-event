@@ -1,5 +1,5 @@
 import React from "react";
-import heroImg from "../../assets/sasa-2.jpeg";
+import heroImg from "../../assets/ma-1.png";
 
 export default function HeroBanner() {
   return (

@@ -7,10 +7,10 @@ import {
 } from "lucide-react";
 
 /* ───────── IMAGES ───────── */
-import img1 from "../../assets/za-10.jpeg";
-import img2 from "../../assets/fa-14.jpeg";
-import img3 from "../../assets/fa-15.jpeg";
-import img4 from "../../assets/fa-21.jpeg";
+import img1 from "../../assets/sha.png";
+import img2 from "../../assets/birthday/ba-8.jpeg";
+import img3 from "../../assets/en.png";
+import img4 from "../../assets/aa-1.jpg";
 
 export default function GallerySection() {
   const events = [

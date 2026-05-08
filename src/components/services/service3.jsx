@@ -10,15 +10,15 @@ import {
 } from "lucide-react";
 
 /* ───────── IMAGES ───────── */
-import img1 from "../../assets/ah-2.avif";
-import img2 from "../../assets/za-10.jpeg";
-import img3 from "../../assets/ad-1.jpg";
-import img4 from "../../assets/za-7.jpeg";
+import img1 from "../../assets/birthday/ba-2.jpg";
+import img2 from "../../assets/b-2.jpg";
+import img3 from "../../assets/anivarsary/an-4.jpeg";
+import img4 from "../../assets/haldi/za-3.jpeg";
 import img5 from "../../assets/za-12.jpeg";
 import img6 from "../../assets/za-9.jpeg";
-import img7 from "../../assets/ba-2.webp";
-import img8 from "../../assets/za-27.jpeg";
-import img9 from "../../assets/za-26.jpeg";
+import img7 from "../../assets/p-1.jpg";
+import img8 from "../../assets/birthday/ba-3.jpeg";
+import img9 from "../../assets/za-25.jpeg";
 
 const services = [
   {
