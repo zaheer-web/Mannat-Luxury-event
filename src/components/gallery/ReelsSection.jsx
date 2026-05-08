@@ -1,6 +1,11 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import {
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
+} from "lucide-react";
 
 import reel1 from "../../assets/za-29.mp4";
 import reel2 from "../../assets/za-31.mp4";
@@ -16,9 +21,14 @@ const reels = [
 
 export default function ReelsSection() {
   const videoRefs = useRef([]);
-  const [playingIndex, setPlayingIndex] = useState(null);
-  const [mutedIndex, setMutedIndex] = useState([0, 1, 2, 3]);
 
+  const [playingIndex, setPlayingIndex] =
+    useState(null);
+
+  const [mutedIndex, setMutedIndex] =
+    useState([0, 1, 2, 3]);
+
+  /* ───────── PLAY / PAUSE ───────── */
   const handlePlayPause = (index) => {
     videoRefs.current.forEach((video, i) => {
       if (!video || i === index) return;
@@ -26,6 +36,7 @@ export default function ReelsSection() {
     });
 
     const current = videoRefs.current[index];
+
     if (!current) return;
 
     if (current.paused) {
@@ -37,81 +48,185 @@ export default function ReelsSection() {
     }
   };
 
+  /* ───────── MUTE ───────── */
   const toggleMute = (e, index) => {
     e.stopPropagation();
+
     const current = videoRefs.current[index];
+
     if (!current) return;
+
     current.muted = !current.muted;
+
     setMutedIndex((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      prev.includes(index)
+        ? prev.filter((i) => i !== index)
+        : [...prev, index]
     );
   };
 
   return (
-    <section className="relative bg-[#080808] py-24 overflow-hidden">
-
-      {/* ── BG TEXTURE ── */}
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28">
+      
+      {/* BG GRID */}
       <div
-        className="absolute inset-0 opacity-[0.025] pointer-events-none"
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(0deg,#f5c518 0,#f5c518 1px,transparent 1px,transparent 72px),repeating-linear-gradient(90deg,#f5c518 0,#f5c518 1px,transparent 1px,transparent 72px)",
+            "repeating-linear-gradient(0deg,#ec4899 0,#ec4899 1px,transparent 1px,transparent 72px),repeating-linear-gradient(90deg,#ec4899 0,#ec4899 1px,transparent 1px,transparent 72px)",
         }}
       />
-      <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-yellow-500/6 rounded-full blur-[130px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 md:px-12">
+      {/* Glow */}
+      <div className="absolute left-1/2 top-0 h-[320px] w-[700px] -translate-x-1/2 rounded-full bg-pink-500/10 blur-[130px]" />
 
-        {/* ── HEADING ── */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
-
+      {/* Container */}
+      <div className="relative z-10 mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-10">
+        
+        {/* ───────── HEADING ───────── */}
+        <div className="mb-14 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+          
+          {/* Left */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-[2px] bg-yellow-500" />
-              <span className="text-yellow-500 text-[11px] font-bold uppercase tracking-[5px]">
+            
+            {/* Label */}
+            <div className="mb-5 flex items-center gap-3">
+              <div className="h-[2px] w-8 bg-pink-500" />
+
+              <span
+                className="
+                text-[10px]
+                uppercase tracking-[5px]
+                text-pink-500
+              "
+                style={{
+                  fontFamily:
+                    "'Montserrat', sans-serif",
+                  fontWeight: 600,
+                }}
+              >
                 Watch Us Work
               </span>
             </div>
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight tracking-tight">
-              Our <span className="text-yellow-400">Reels</span>
+
+            {/* Heading */}
+            <h2
+              className="
+              text-[2.5rem]
+              leading-[1.05]
+              text-black
+
+              sm:text-5xl
+              lg:text-6xl
+            "
+              style={{
+                fontFamily:
+                  "'Cormorant Garamond', serif",
+                fontWeight: 700,
+              }}
+            >
+              Our{" "}
+
+              <span className="text-pink-500">
+                Reels
+              </span>
             </h2>
           </motion.div>
 
+          {/* Right Text */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="text-gray-500 text-sm sm:text-base max-w-xs sm:text-right leading-relaxed"
-          >
-            देखें हमारे latest decoration moments 🎥
-          </motion.p>
+            transition={{
+              duration: 0.5,
+              delay: 0.15,
+            }}
+            className="
+            max-w-sm
+            text-sm leading-7
+            text-black/60
 
+            sm:text-right
+          "
+            style={{
+              fontFamily: "'Inter', sans-serif",
+            }}
+          >
+            Watch our latest luxury decoration
+            setups and beautiful celebration
+            moments.
+          </motion.p>
         </div>
 
-        {/* ── REEL GRID ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-
+        {/* ───────── REELS GRID ───────── */}
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
+          
           {reels.map((item, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: index * 0.1, ease: "easeOut" }}
-              className="group relative rounded-2xl overflow-hidden cursor-pointer bg-[#111] border border-white/5 hover:border-yellow-500/30 transition-all duration-400"
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                margin: "-40px",
+              }}
+              transition={{
+                duration: 0.55,
+                delay: index * 0.08,
+              }}
+              className="
+              group relative overflow-hidden
+              rounded-[24px]
+
+              border border-pink-100
+              bg-white
+
+              shadow-lg shadow-pink-100/40
+
+              transition-all duration-500
+
+              hover:-translate-y-2
+              hover:border-pink-300
+              hover:shadow-2xl hover:shadow-pink-200/50
+            "
               style={{ aspectRatio: "9/16" }}
-              onClick={() => handlePlayPause(index)}
+              onClick={() =>
+                handlePlayPause(index)
+              }
             >
+              
+              {/* Top Border */}
+              <div
+                className="
+                absolute left-0 top-0 z-30
+                h-[3px] w-0
+                bg-pink-500
+
+                transition-all duration-500
+                group-hover:w-full
+              "
+              />
 
               {/* VIDEO */}
               <video
-                ref={(el) => (videoRefs.current[index] = el)}
+                ref={(el) =>
+                  (videoRefs.current[index] = el)
+                }
                 src={item.video}
                 loop
                 muted
@@ -120,69 +235,143 @@ export default function ReelsSection() {
                 onLoadedData={(e) => {
                   e.target.currentTime = 0.1;
                 }}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="
+                absolute inset-0
+                h-full w-full
+                object-cover
+
+                transition-transform duration-700
+                group-hover:scale-105
+              "
               />
 
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-black/20" />
-
-              {/* Top gold line */}
-              <div className="absolute top-0 left-0 h-[2px] w-0 group-hover:w-full bg-gradient-to-r from-yellow-400 to-yellow-600 transition-all duration-500 z-20" />
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black/20" />
 
               {/* Label */}
-              <div className="absolute top-3 left-3 z-20">
-                <span className="bg-black/60 backdrop-blur-sm border border-yellow-500/20 text-yellow-400 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-full">
+              <div className="absolute left-3 top-3 z-20">
+                
+                <span
+                  className="
+                  rounded-full
+                  border border-pink-200
+                  bg-white/90
+
+                  px-3 py-1
+
+                  text-[10px]
+                  uppercase tracking-[3px]
+                  text-pink-500
+
+                  backdrop-blur-md
+                "
+                  style={{
+                    fontFamily:
+                      "'Montserrat', sans-serif",
+                    fontWeight: 700,
+                  }}
+                >
                   {item.label}
                 </span>
               </div>
 
-              {/* Mute button */}
+              {/* Mute Button */}
               <button
-                onClick={(e) => toggleMute(e, index)}
-                className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-black/60 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/70 hover:text-yellow-400 hover:border-yellow-500/40 transition-all duration-200"
+                onClick={(e) =>
+                  toggleMute(e, index)
+                }
+                className="
+                absolute right-3 top-3 z-20
+
+                flex h-9 w-9
+                items-center justify-center
+
+                rounded-full
+                border border-white/20
+                bg-white/20
+
+                text-white
+                backdrop-blur-md
+
+                transition-all duration-300
+
+                hover:bg-pink-500
+              "
               >
                 {mutedIndex.includes(index) ? (
-                  <VolumeX size={13} />
+                  <VolumeX size={14} />
                 ) : (
-                  <Volume2 size={13} />
+                  <Volume2 size={14} />
                 )}
               </button>
 
-              {/* Play / Pause button — center */}
-              <div className="absolute inset-0 flex items-center justify-center z-20">
+              {/* Play Button */}
+              <div className="absolute inset-0 z-20 flex items-center justify-center">
+                
                 <motion.div
                   whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.93 }}
+                  whileTap={{ scale: 0.92 }}
                   className={`
-                    w-14 h-14 rounded-full flex items-center justify-center transition-all duration-300
-                    ${playingIndex === index
-                      ? "bg-white/10 backdrop-blur-sm border border-white/20 opacity-0 group-hover:opacity-100"
-                      : "bg-yellow-500 shadow-[0_0_30px_rgba(245,193,24,0.5)]"}
+                    flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300
+
+                    ${
+                      playingIndex === index
+                        ? "border border-white/30 bg-white/20 backdrop-blur-md"
+                        : "bg-pink-500 shadow-[0_0_30px_rgba(236,72,153,0.45)]"
+                    }
                   `}
                 >
                   {playingIndex === index ? (
-                    <Pause size={20} className="text-white" />
+                    <Pause
+                      size={20}
+                      className="text-white"
+                    />
                   ) : (
-                    <Play size={20} className="text-black fill-black ml-1" />
+                    <Play
+                      size={20}
+                      className="ml-1 fill-white text-white"
+                    />
                   )}
                 </motion.div>
               </div>
 
-              {/* Bottom label */}
-              <div className="absolute bottom-0 left-0 right-0 z-20 px-4 pb-4">
+              {/* Bottom */}
+              <div className="absolute bottom-0 left-0 right-0 z-20 p-4">
+                
                 <div className="flex items-center gap-2">
-                  <div className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${playingIndex === index ? "bg-yellow-400 animate-pulse" : "bg-white/30"}`} />
-                  <span className="text-white/60 text-[11px] font-medium">
-                    {playingIndex === index ? "Playing..." : "Tap to play"}
+                  
+                  <div
+                    className={`
+                      h-2 w-2 rounded-full
+
+                      ${
+                        playingIndex === index
+                          ? "animate-pulse bg-pink-400"
+                          : "bg-white/50"
+                      }
+                    `}
+                  />
+
+                  <span
+                    className="
+                    text-[11px]
+                    text-white
+                  "
+                    style={{
+                      fontFamily:
+                        "'Inter', sans-serif",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {playingIndex === index
+                      ? "Playing..."
+                      : "Tap to play"}
                   </span>
                 </div>
               </div>
-
             </motion.div>
           ))}
-
         </div>
-
       </div>
     </section>
   );

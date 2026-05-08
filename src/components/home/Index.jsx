@@ -10,6 +10,9 @@ import ReelsSection from "../gallery/ReelsSection";
 
 import { setSEO } from "../../utils/seo";
 import CoursePricing from "../course/CoursePricing";
+import EventCategories from "./EventCategories";
+import CategorySection from "./CategorySection";
+import Banner from "./Banner";
 
 export default function Index() {
   useEffect(() => {
@@ -38,8 +41,13 @@ export default function Index() {
     <>
       <Hero />
       <Divider />
-      <About1 />
+      <EventCategories/>
+      
+      <CategorySection/>
       <Divider />
+      <Banner/>
+      <Divider />
+      
       <Service />
       <Divider />
       <CTA />
@@ -53,7 +61,8 @@ export default function Index() {
 
 
       <Divider />
-      <CoursePricing/>
+      <About1 />
+      
       <Divider />
 
       

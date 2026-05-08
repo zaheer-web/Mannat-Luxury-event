@@ -8,25 +8,38 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+} from "framer-motion";
 
 export default function Portfolio() {
   const navigate = useNavigate();
 
-  const [galleryItems, setGalleryItems] = useState([]);
-  const [currentIndex, setCurrentIndex] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [galleryItems, setGalleryItems] =
+    useState([]);
 
-  /* ───────── FETCH GALLERY ───────── */
+  const [currentIndex, setCurrentIndex] =
+    useState(null);
+
+  const [loading, setLoading] =
+    useState(true);
+
+  /* ───────── FETCH ───────── */
   const fetchGallery = async () => {
     try {
       setLoading(true);
 
-      const response = await api.get("/gallery");
+      const response = await api.get(
+        "/gallery"
+      );
 
       if (response.data.status) {
-        setGalleryItems((response.data.data || []).slice(0, 6));
+        setGalleryItems(
+          (response.data.data || []).slice(0, 6)
+        );
       }
     } catch (error) {
       console.log(error);
@@ -42,140 +55,69 @@ export default function Portfolio() {
   /* ───────── NEXT ───────── */
   const nextImage = () => {
     setCurrentIndex((prev) =>
-      prev === galleryItems.length - 1 ? 0 : prev + 1
+      prev === galleryItems.length - 1
+        ? 0
+        : prev + 1
     );
   };
 
   /* ───────── PREV ───────── */
   const prevImage = () => {
     setCurrentIndex((prev) =>
-      prev === 0 ? galleryItems.length - 1 : prev - 1
+      prev === 0
+        ? galleryItems.length - 1
+        : prev - 1
     );
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#060606] py-24">
-      {/* ───────── PREMIUM BG ───────── */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Animated Grid */}
-        <motion.div
-          animate={{
-            backgroundPosition: [
-              "0px 0px",
-              "120px 120px",
-            ],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            ease: "linear",
-          }}
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,215,0,0.15) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,215,0,0.15) 1px, transparent 1px)
-            `,
-            backgroundSize: "80px 80px",
-          }}
-        />
+    <section className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28">
+      
+      {/* BG GRID */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(0deg,#ec4899 0,#ec4899 1px,transparent 1px,transparent 72px),repeating-linear-gradient(90deg,#ec4899 0,#ec4899 1px,transparent 1px,transparent 72px)",
+        }}
+      />
 
-        {/* Animated Glow 1 */}
-        <motion.div
-          animate={{
-            x: [0, 60, 0],
-            y: [0, 40, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute left-[-100px] top-[-80px] h-[420px] w-[420px] rounded-full bg-yellow-500/10 blur-[140px]"
-        />
+      {/* Glow */}
+      <div className="absolute left-1/2 top-0 h-[320px] w-[700px] -translate-x-1/2 rounded-full bg-pink-500/10 blur-[130px]" />
 
-        {/* Animated Glow 2 */}
-        <motion.div
-          animate={{
-            x: [0, -50, 0],
-            y: [0, -40, 0],
-            scale: [1, 1.15, 1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-[-120px] right-[-80px] h-[350px] w-[350px] rounded-full bg-yellow-500/10 blur-[120px]"
-        />
-
-        {/* Floating Particles */}
-        {[...Array(15)].map((_, i) => (
+      {/* Container */}
+      <div className="relative z-10 mx-auto max-w-[90rem] px-4 sm:px-6 lg:px-10">
+        
+        {/* ───────── TOP ───────── */}
+        <div className="mb-16">
+          
+          {/* Label */}
           <motion.div
-            key={i}
             initial={{
               opacity: 0,
-              y: 100,
+              x: -20,
             }}
-            animate={{
-              opacity: [0, 1, 0],
-              y: [-20, -500],
-              x: [0, i % 2 === 0 ? 40 : -40],
-            }}
-            transition={{
-              duration: 7 + i * 0.4,
-              repeat: Infinity,
-              delay: i * 0.5,
-              ease: "easeInOut",
-            }}
-            className="absolute bottom-0"
-            style={{
-              left: `${5 + i * 6}%`,
-            }}
-          >
-            <Sparkles
-              size={12}
-              className="text-yellow-400/50"
-            />
-          </motion.div>
-        ))}
-
-        {/* Moving Gradient */}
-        <motion.div
-          animate={{
-            opacity: [0.2, 0.35, 0.2],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(250,204,21,0.08),transparent_60%)]"
-        />
-      </div>
-
-      {/* ───────── CONTAINER ───────── */}
-      <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-14">
-        {/* ───────── TOP SECTION ───────── */}
-        <div className="mb-20 flex flex-col items-start">
-          {/* LABEL */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
             whileInView={{
               opacity: 1,
               x: 0,
             }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{
+              duration: 0.5,
+            }}
             className="mb-5 flex items-center gap-3"
           >
-            <div className="h-[2px] w-8 bg-yellow-500" />
+            <div className="h-[2px] w-8 bg-pink-500" />
 
             <span
-              className="text-[10px] uppercase tracking-[5px] text-yellow-400"
+              className="
+              text-[10px]
+              uppercase tracking-[5px]
+              text-pink-500
+            "
               style={{
-                fontFamily: "'Inter', sans-serif",
+                fontFamily:
+                  "'Inter', sans-serif",
                 fontWeight: 600,
               }}
             >
@@ -183,16 +125,30 @@ export default function Portfolio() {
             </span>
           </motion.div>
 
-          {/* HEADING */}
+          {/* Heading */}
           <motion.h2
-            initial={{ opacity: 0, y: 25 }}
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
             whileInView={{
               opacity: 1,
               y: 0,
             }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="max-w-4xl text-[2.8rem] leading-[0.95] text-white sm:text-5xl lg:text-7xl"
+            transition={{
+              duration: 0.7,
+            }}
+            className="
+            max-w-5xl
+
+            text-[2.6rem]
+            leading-[0.95]
+            text-black
+
+            sm:text-5xl
+            lg:text-7xl
+          "
             style={{
               fontFamily:
                 "'Cormorant Garamond', serif",
@@ -203,24 +159,18 @@ export default function Portfolio() {
 
             <br />
 
-            <span
-              className="text-yellow-400"
-              style={{
-                fontFamily:
-                  "'Playfair Display', serif",
-                fontWeight: 700,
-              }}
-            >
-              Elegance &{" "}
-              <span className="text-white">
-                Luxury
-              </span>
-            </span>
+            <span className="text-pink-500">
+              Elegance
+            </span>{" "}
+            & Luxury
           </motion.h2>
 
-          {/* DESCRIPTION */}
+          {/* Desc */}
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{
+              opacity: 0,
+              y: 15,
+            }}
             whileInView={{
               opacity: 1,
               y: 0,
@@ -230,21 +180,32 @@ export default function Portfolio() {
               duration: 0.6,
               delay: 0.2,
             }}
-            className="mt-6 max-w-2xl text-sm leading-8 text-white/85 sm:text-base"
+            className="
+            mt-6
+            max-w-2xl
+            text-sm leading-8
+            text-black/60
+
+            sm:text-base
+          "
             style={{
-              fontFamily: "'Inter', sans-serif",
-              fontWeight: 400,
+              fontFamily:
+                "'Inter', sans-serif",
             }}
           >
             Discover our premium balloon
-            decorations, luxury event styling and
-            unforgettable celebration setups
-            designed with creativity and perfection.
+            decorations, luxury event styling
+            and unforgettable celebration
+            setups designed beautifully for
+            special moments.
           </motion.p>
 
-          {/* BUTTON */}
+          {/* Button */}
           <motion.button
-            initial={{ opacity: 0, y: 20 }}
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
             whileInView={{
               opacity: 1,
               y: 0,
@@ -256,55 +217,109 @@ export default function Portfolio() {
             }}
             whileHover={{
               y: -4,
-              scale: 1.02,
             }}
             whileTap={{ scale: 0.96 }}
-            onClick={() => navigate("/our-gallery")}
-            className="group relative mt-8 flex h-[60px] items-center justify-center overflow-hidden rounded-2xl border border-yellow-500/20 bg-yellow-500 px-8 text-black shadow-[0_15px_50px_rgba(245,193,24,0.25)] transition-all duration-500 hover:shadow-[0_25px_70px_rgba(245,193,24,0.45)]"
+            onClick={() =>
+              navigate("/our-gallery")
+            }
+            className="
+            group relative mt-8
+
+            flex h-[58px]
+            items-center justify-center
+            gap-3
+
+            overflow-hidden
+            rounded-2xl
+
+            border border-pink-200
+            bg-pink-500
+
+            px-8
+
+            text-white
+            shadow-xl shadow-pink-200
+
+            transition-all duration-500
+            hover:bg-pink-600
+          "
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily:
+                "'Inter', sans-serif",
               fontWeight: 600,
             }}
           >
             {/* Shine */}
             <span className="absolute inset-0 overflow-hidden rounded-2xl">
-              <span className="absolute left-[-120%] top-0 h-full w-[120%] skew-x-[25deg] bg-white/25 transition-all duration-1000 group-hover:left-[130%]" />
-            </span>
+              <span
+                className="
+                absolute left-[-120%] top-0
+                h-full w-[120%]
+                skew-x-[25deg]
+                bg-white/20
 
-            {/* Content */}
-            <span className="relative z-10 flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-black/10 transition-all duration-300 group-hover:bg-black">
-                <Sparkles
-                  size={16}
-                  className="transition-all duration-300 group-hover:text-yellow-400"
-                />
-              </div>
-
-              <span className="text-[14px] tracking-[0.3px]">
-                View All Projects
-              </span>
-
-              <ArrowRight
-                size={17}
-                className="transition-transform duration-300 group-hover:translate-x-1"
+                transition-all duration-1000
+                group-hover:left-[130%]
+              "
               />
             </span>
+
+            {/* Icon */}
+            <div
+              className="
+              relative z-10
+              flex h-9 w-9
+              items-center justify-center
+
+              rounded-full
+              bg-white/20
+            "
+            >
+              <Sparkles size={16} />
+            </div>
+
+            {/* Text */}
+            <span className="relative z-10 text-[14px]">
+              View All Projects
+            </span>
+
+            <ArrowRight
+              size={17}
+              className="
+              relative z-10
+
+              transition-transform duration-300
+              group-hover:translate-x-1
+            "
+            />
           </motion.button>
         </div>
 
-        {/* ───────── GALLERY GRID ───────── */}
-        {!loading && galleryItems.length > 0 && (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryItems.map((item, i) => (
-              <Card
-                key={i}
-                item={item}
-                index={i}
-                onClick={() => setCurrentIndex(i)}
-              />
-            ))}
-          </div>
-        )}
+        {/* ───────── GRID ───────── */}
+        {!loading &&
+          galleryItems.length > 0 && (
+            <div
+              className="
+              grid grid-cols-1 gap-5
+
+              sm:grid-cols-2
+              lg:grid-cols-3
+            "
+            >
+              {galleryItems.map(
+                (item, i) => (
+                  <Card
+                    key={i}
+                    item={item}
+                    index={i}
+                    onClick={() =>
+                      setCurrentIndex(i)
+                    }
+                  />
+                )
+              )}
+            </div>
+          )}
       </div>
 
       {/* ───────── FULLSCREEN ───────── */}
@@ -315,25 +330,66 @@ export default function Portfolio() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl"
+              className="
+              fixed inset-0 z-50
+
+              flex items-center justify-center
+
+              bg-black/90
+              p-4
+              backdrop-blur-xl
+            "
             >
-              {/* CLOSE */}
+              
+              {/* Close */}
               <button
-                onClick={() => setCurrentIndex(null)}
-                className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full border border-yellow-500/20 bg-black/50 text-yellow-400 transition-all duration-300 hover:bg-yellow-500 hover:text-black"
+                onClick={() =>
+                  setCurrentIndex(null)
+                }
+                className="
+                absolute right-5 top-5
+
+                flex h-12 w-12
+                items-center justify-center
+
+                rounded-full
+                bg-white
+
+                text-pink-500
+
+                transition-all duration-300
+                hover:bg-pink-500
+                hover:text-white
+              "
               >
                 <X size={20} />
               </button>
 
-              {/* PREV */}
+              {/* Prev */}
               <button
                 onClick={prevImage}
-                className="absolute left-4 flex h-12 w-12 items-center justify-center rounded-full border border-yellow-500/20 bg-black/50 text-yellow-400 transition-all duration-300 hover:bg-yellow-500 hover:text-black md:left-8"
+                className="
+                absolute left-4
+
+                flex h-12 w-12
+                items-center justify-center
+
+                rounded-full
+                bg-white
+
+                text-pink-500
+
+                transition-all duration-300
+                hover:bg-pink-500
+                hover:text-white
+
+                md:left-8
+              "
               >
                 <ChevronLeft size={28} />
               </button>
 
-              {/* IMAGE */}
+              {/* Media */}
               <motion.div
                 key={currentIndex}
                 initial={{
@@ -351,35 +407,68 @@ export default function Portfolio() {
                 transition={{
                   duration: 0.35,
                 }}
-                className="overflow-hidden rounded-[30px] border border-yellow-500/20 shadow-[0_25px_100px_rgba(0,0,0,0.8)]"
+                className="
+                overflow-hidden
+                rounded-[28px]
+
+                border border-white/10
+
+                shadow-[0_25px_100px_rgba(0,0,0,0.6)]
+              "
               >
-                {galleryItems[currentIndex].type ===
-                "video" ? (
+                {galleryItems[currentIndex]
+                  .type === "video" ? (
                   <video
                     src={
-                      galleryItems[currentIndex]
-                        .file_url
+                      galleryItems[
+                        currentIndex
+                      ].file_url
                     }
                     controls
                     autoPlay
-                    className="max-h-[85vh] max-w-[92vw] object-cover"
+                    className="
+                    max-h-[85vh]
+                    max-w-[92vw]
+                    object-cover
+                  "
                   />
                 ) : (
                   <img
                     src={
-                      galleryItems[currentIndex]
-                        .file_url
+                      galleryItems[
+                        currentIndex
+                      ].file_url
                     }
                     alt=""
-                    className="max-h-[85vh] max-w-[92vw] object-cover"
+                    className="
+                    max-h-[85vh]
+                    max-w-[92vw]
+                    object-cover
+                  "
                   />
                 )}
               </motion.div>
 
-              {/* NEXT */}
+              {/* Next */}
               <button
                 onClick={nextImage}
-                className="absolute right-4 flex h-12 w-12 items-center justify-center rounded-full border border-yellow-500/20 bg-black/50 text-yellow-400 transition-all duration-300 hover:bg-yellow-500 hover:text-black md:right-8"
+                className="
+                absolute right-4
+
+                flex h-12 w-12
+                items-center justify-center
+
+                rounded-full
+                bg-white
+
+                text-pink-500
+
+                transition-all duration-300
+                hover:bg-pink-500
+                hover:text-white
+
+                md:right-8
+              "
               >
                 <ChevronRight size={28} />
               </button>
@@ -414,53 +503,104 @@ function Card({ item, onClick, index }) {
         y: -10,
       }}
       onClick={onClick}
-      className="group relative cursor-pointer overflow-hidden rounded-[30px] border border-white/5 bg-[#0d0d0d]"
-    >
-      {/* Glow */}
-      <div className="absolute inset-0 z-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
-        <div className="absolute -top-20 right-0 h-44 w-44 rounded-full bg-yellow-500/15 blur-[90px]" />
-      </div>
+      className="
+      group relative cursor-pointer overflow-hidden
 
-      {/* IMAGE */}
+      rounded-[28px]
+      border border-pink-100
+      bg-white
+
+      shadow-lg shadow-pink-100/40
+
+      transition-all duration-500
+
+      hover:border-pink-300
+      hover:shadow-2xl hover:shadow-pink-200/50
+    "
+    >
+      
+      {/* Top Border */}
+      <div
+        className="
+        absolute left-0 top-0 z-20
+        h-[3px] w-0
+        bg-pink-500
+
+        transition-all duration-500
+        group-hover:w-full
+      "
+      />
+
+      {/* Image */}
       <div className="relative h-[320px] overflow-hidden">
+        
         {item.type === "video" ? (
           <video
             src={item.file_url}
             muted
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="
+            h-full w-full object-cover
+
+            transition-transform duration-700
+            group-hover:scale-110
+          "
           />
         ) : (
           <img
             src={item.file_url}
             alt=""
-            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+            className="
+            h-full w-full object-cover
+
+            transition-transform duration-700
+            group-hover:scale-110
+          "
           />
         )}
 
-        {/* OVERLAY */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/20" />
 
-        {/* ICON */}
-        <div className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-yellow-500/20 bg-black/60 backdrop-blur-xl transition-all duration-500 group-hover:scale-110 group-hover:bg-yellow-500">
+        {/* Icon */}
+        <div
+          className="
+          absolute right-5 top-5 z-20
+
+          flex h-12 w-12
+          items-center justify-center
+
+          rounded-2xl
+          bg-white/90
+
+          text-pink-500
+          backdrop-blur-md
+
+          transition-all duration-500
+
+          group-hover:scale-110
+          group-hover:bg-pink-500
+          group-hover:text-white
+        "
+        >
           {item.type === "video" ? (
-            <Video
-              size={20}
-              className="text-yellow-400 transition-all duration-500 group-hover:text-black"
-            />
+            <Video size={20} />
           ) : (
-            <ImageIcon
-              size={20}
-              className="text-yellow-400 transition-all duration-500 group-hover:text-black"
-            />
+            <ImageIcon size={20} />
           )}
         </div>
 
-        {/* CONTENT */}
+        {/* Content */}
         <div className="absolute bottom-0 left-0 right-0 z-20 p-6">
+          
           <p
-            className="text-[10px] uppercase tracking-[5px] text-yellow-400"
+            className="
+            text-[10px]
+            uppercase tracking-[5px]
+            text-pink-300
+          "
             style={{
-              fontFamily: "'Inter', sans-serif",
+              fontFamily:
+                "'Inter', sans-serif",
               fontWeight: 600,
             }}
           >
@@ -468,7 +608,14 @@ function Card({ item, onClick, index }) {
           </p>
 
           <h3
-            className="mt-2 text-2xl text-white transition-all duration-300 group-hover:text-yellow-400"
+            className="
+            mt-2
+            text-2xl
+            text-white
+
+            transition-all duration-300
+            group-hover:text-pink-300
+          "
             style={{
               fontFamily:
                 "'Cormorant Garamond', serif",
@@ -478,11 +625,25 @@ function Card({ item, onClick, index }) {
             Premium Event Setup
           </h3>
 
-          {/* LINE */}
+          {/* Bottom Line */}
           <div className="mt-4 flex items-center gap-2">
-            <div className="h-[2px] w-10 bg-yellow-400 transition-all duration-500 group-hover:w-16" />
+            
+            <div
+              className="
+              h-[2px] w-10
+              bg-pink-400
 
-            <div className="h-2 w-2 rounded-full bg-yellow-400/50 transition-all duration-500 group-hover:bg-yellow-400" />
+              transition-all duration-500
+              group-hover:w-16
+            "
+            />
+
+            <div
+              className="
+              h-2 w-2 rounded-full
+              bg-pink-300
+            "
+            />
           </div>
         </div>
       </div>

@@ -33,22 +33,23 @@ export default function Header() {
 
   const navLinkClass = ({ isActive }) =>
     isActive
-      ? "text-yellow-400 border-b-2 border-yellow-400 pb-1"
-      : "text-gray-200 hover:text-yellow-400 transition duration-300";
+      ? "text-pink-500 border-b-2 border-pink-500 pb-1"
+      : "text-black hover:text-pink-500 transition duration-300";
 
   return (
     <>
+      {/* Navbar */}
       <nav
         className={`fixed w-full top-0 left-0 z-50 transition-all duration-500
         ${
           scrolled
-            ? "bg-black/95 backdrop-blur-xl shadow-lg shadow-yellow-500/10"
-            : "bg-transparent"
+            ? "bg-white shadow-lg shadow-pink-100"
+            : "bg-white"
         }`}
       >
         <div
           className="
-          max-w-7xl mx-auto
+          max-w-[90rem] mx-auto
           flex items-center justify-between
           px-4 sm:px-6 lg:px-8
           py-3 md:py-4
@@ -72,7 +73,7 @@ export default function Header() {
             <div className="flex flex-col leading-tight">
               <span
                 className="
-                text-white
+                text-black
                 text-xs sm:text-sm md:text-lg
                 font-bold
                 tracking-wide
@@ -84,7 +85,7 @@ export default function Header() {
 
               <span
                 className="
-                text-yellow-400
+                text-pink-500
                 text-[10px] sm:text-xs md:text-sm
                 font-semibold
                 tracking-[2px] md:tracking-[4px]
@@ -142,15 +143,15 @@ export default function Header() {
             <button
               className="
               hidden lg:flex items-center gap-2
-              bg-yellow-500 text-black
+              bg-pink-500 text-white
               px-4 xl:px-6
               py-2.5
               rounded-lg
               font-semibold
               text-sm xl:text-base
-              hover:bg-yellow-400
+              hover:bg-pink-600
               transition-all duration-300
-              shadow-lg shadow-yellow-500/30
+              shadow-lg shadow-pink-200
             "
             >
               GET STARTED
@@ -162,10 +163,10 @@ export default function Header() {
           <button
             className="
             lg:hidden
-            text-white
+            text-black
             p-2
             rounded-lg
-            hover:bg-white/10
+            hover:bg-pink-50
             transition
           "
             onClick={() => setMenuOpen(!menuOpen)}
@@ -181,7 +182,7 @@ export default function Header() {
         fixed top-0 right-0
         h-screen
         w-[85%] sm:w-[70%]
-        bg-black/95 backdrop-blur-xl
+        bg-white
         z-[60]
         transform transition-transform duration-500 ease-in-out
         lg:hidden
@@ -193,7 +194,7 @@ export default function Header() {
           className="
           flex items-center justify-between
           px-5 py-5
-          border-b border-yellow-500/10
+          border-b border-pink-100
         "
         >
           <div className="flex items-center gap-3">
@@ -204,11 +205,11 @@ export default function Header() {
             />
 
             <div className="flex flex-col leading-tight">
-              <span className="text-white text-sm font-bold uppercase">
+              <span className="text-black text-sm font-bold uppercase">
                 Mannat Luxury
               </span>
 
-              <span className="text-yellow-400 text-xs tracking-[3px] uppercase">
+              <span className="text-pink-500 text-xs tracking-[3px] uppercase">
                 Events
               </span>
             </div>
@@ -216,7 +217,7 @@ export default function Header() {
 
           <button
             onClick={() => setMenuOpen(false)}
-            className="text-white"
+            className="text-black"
           >
             <X size={28} />
           </button>
@@ -292,13 +293,13 @@ export default function Header() {
               className="
               w-full
               flex justify-center items-center gap-2
-              bg-yellow-500 text-black
+              bg-pink-500 text-white
               px-6 py-3
               rounded-lg
               font-semibold
-              hover:bg-yellow-400
+              hover:bg-pink-600
               transition-all duration-300
-              shadow-md shadow-yellow-500/30
+              shadow-md shadow-pink-200
             "
             >
               GET STARTED
@@ -311,7 +312,7 @@ export default function Header() {
       {/* Overlay */}
       {menuOpen && (
         <div
-          className="fixed inset-0 bg-black/60 z-50 lg:hidden"
+          className="fixed inset-0 bg-black/40 z-50 lg:hidden"
           onClick={() => setMenuOpen(false)}
         />
       )}

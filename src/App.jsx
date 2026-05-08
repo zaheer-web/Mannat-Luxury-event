@@ -19,6 +19,13 @@ import AboutMain from "./components/about/AboutMain";
 import Gallery from "./components/gallery/Gallery";
 import Deshboard from "./adminDeshboard/Dashboard";
 import Course from "./components/course/Course";
+import Birthday from "./layouts/Birthday";
+import Aniversary from "./layouts/Aniversary";
+import KidShower from "./layouts/KidShower";
+import SameDay from "./layouts/SameDay";
+import Activity from "./layouts/Activity";
+import Haldi from "./layouts/Haldi";
+
 
 
 function App() {
@@ -42,6 +49,18 @@ function App() {
         <Route path="/course" element={<Course/>} />
 
         <Route path="/admin" element={<Deshboard />} />
+        <Route path="/gallery/birthday" element={<Birthday/>} />
+        <Route path="/gallery/sameday" element={<SameDay/>} />
+        <Route path="/gallery/anniversary" element={<Aniversary/>} />
+        <Route path="/gallery/babyshower" element={<KidShower/>} />
+        <Route path="gallery/festive" element={<Birthday/>} />
+        <Route path="/gallery/gift" element={<Birthday/>} />
+        <Route path="/gallery/kids" element={<Activity/>} />
+        <Route path="/gallery/pre-wedding" element={<Haldi/>} />
+
+        
+
+
 
        
 
