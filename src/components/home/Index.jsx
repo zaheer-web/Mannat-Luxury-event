@@ -50,9 +50,10 @@ export default function Index() {
       
       <Service />
       <Divider />
-      <CTA />
+      
       
       <Highlights />
+      
        <Divider />
 
       
@@ -60,9 +61,14 @@ export default function Index() {
 
 
 
+      
       <Divider />
+
       <About1 />
       
+      <Divider />
+      
+      <CTA />
       <Divider />
 
       
