@@ -13,6 +13,7 @@ import CoursePricing from "../course/CoursePricing";
 import EventCategories from "./EventCategories";
 import CategorySection from "./CategorySection";
 import Banner from "./Banner";
+import ReviewsSection from "./ReviewsSection";
 
 export default function Index() {
   useEffect(() => {
@@ -70,6 +71,7 @@ export default function Index() {
       
       <CTA />
       <Divider />
+      <ReviewsSection/>
 
       
 
