@@ -17,7 +17,7 @@ import {
 import img1 from "../../assets/birthday/ba-4.jpeg";
 import img2 from "../../assets/birthday/bs-2.jpg";
 import img3 from "../../assets/anivarsary/an-1.jpeg";
-import img4 from "../../assets/haldi/p-1.jpg";
+import img4 from "../../assets/haldi/za-3.jpeg";
 import img5 from "../../assets/za-9.jpeg";
 import img6 from "../../assets/za-26.jpeg";
 import img7 from "../../assets/za-14.jpeg";

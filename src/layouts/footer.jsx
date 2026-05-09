@@ -9,6 +9,10 @@ import {
   Youtube,
   Linkedin,
   Send,
+  Home,
+  Grid2X2,
+  Image,
+  Contact,
 } from "lucide-react";
 
 import { useState } from "react";
@@ -20,7 +24,7 @@ export default function Footer() {
   return (
     <>
       {/* ───────── FLOATING BUTTON ───────── */}
-      <div className="fixed bottom-6 right-5 z-50 flex flex-col items-end gap-3">
+      <div className="fixed bottom-24 right-5 z-50 flex flex-col items-end gap-3">
         
         {open && (
           <>
@@ -30,14 +34,14 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="
-              flex h-14 w-14 items-center justify-center
-              rounded-2xl
-              bg-[#25D366]
-              text-white
-              shadow-2xl
-              transition-all duration-300
-              hover:scale-110
-            "
+                flex h-14 w-14 items-center justify-center
+                rounded-2xl
+                bg-[#25D366]
+                text-white
+                shadow-2xl
+                transition-all duration-300
+                hover:scale-110
+              "
             >
               <MessageCircle size={24} />
             </a>
@@ -48,14 +52,14 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="
-              flex h-14 w-14 items-center justify-center
-              rounded-2xl
-              bg-gradient-to-br from-pink-500 to-pink-700
-              text-white
-              shadow-2xl
-              transition-all duration-300
-              hover:scale-110
-            "
+                flex h-14 w-14 items-center justify-center
+                rounded-2xl
+                bg-gradient-to-br from-pink-500 to-pink-700
+                text-white
+                shadow-2xl
+                transition-all duration-300
+                hover:scale-110
+              "
             >
               <Instagram size={24} />
             </a>
@@ -66,14 +70,14 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="
-              flex h-14 w-14 items-center justify-center
-              rounded-2xl
-              bg-blue-500
-              text-white
-              shadow-2xl
-              transition-all duration-300
-              hover:scale-110
-            "
+                flex h-14 w-14 items-center justify-center
+                rounded-2xl
+                bg-blue-500
+                text-white
+                shadow-2xl
+                transition-all duration-300
+                hover:scale-110
+              "
             >
               <Facebook size={24} />
             </a>
@@ -84,14 +88,14 @@ export default function Footer() {
         <button
           onClick={() => setOpen(!open)}
           className="
-          flex h-16 w-16 items-center justify-center
-          rounded-2xl
-          bg-white
-          text-[#b0004f]
-          shadow-[0_20px_60px_rgba(0,0,0,0.25)]
-          transition-all duration-500
-          hover:scale-110
-        "
+            flex h-16 w-16 items-center justify-center
+            rounded-2xl
+            bg-white
+            text-[#b0004f]
+            shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+            transition-all duration-500
+            hover:scale-110
+          "
         >
           <Plus
             size={26}
@@ -102,8 +106,8 @@ export default function Footer() {
         </button>
       </div>
 
-      {/* ───────── FOOTER ───────── */}
-      <footer className="relative overflow-hidden bg-[#b0004f] text-white">
+      {/* ───────── DESKTOP FOOTER ───────── */}
+      <footer className="relative hidden overflow-hidden bg-[#b0004f] text-white lg:block">
         
         {/* Container */}
         <div className="mx-auto max-w-[90rem] px-6 py-16 lg:px-12">
@@ -111,45 +115,29 @@ export default function Footer() {
           {/* TOP GRID */}
           <div
             className="
-            grid gap-14
-
-            md:grid-cols-2
-            lg:grid-cols-5
-          "
+              grid gap-14
+              md:grid-cols-2
+              lg:grid-cols-5
+            "
           >
             
             {/* LEFT */}
             <div className="lg:col-span-2">
               
-              {/* Heading */}
               <h2
-                className="
-                text-4xl
-                leading-tight
-                text-white
-              "
-                style={{
-                  fontFamily:
-                    "'Inter', sans-serif",
-                  fontWeight: 700,
-                }}
+                className="text-4xl leading-tight text-white font-bold"
               >
                 Mannat Luxury Events
               </h2>
 
-              {/* Desc */}
               <p
                 className="
-                mt-5
-                max-w-lg
-                text-[15px]
-                leading-8
-                text-white/80
-              "
-                style={{
-                  fontFamily:
-                    "'Inter', sans-serif",
-                }}
+                  mt-5
+                  max-w-lg
+                  text-[15px]
+                  leading-8
+                  text-white/80
+                "
               >
                 Your exclusive destination for
                 luxury decoration setups,
@@ -165,31 +153,27 @@ export default function Footer() {
                   type="email"
                   placeholder="E-mail"
                   className="
-                  h-[60px]
-                  w-full
-                  bg-transparent
-                  px-5
-
-                  text-white
-                  placeholder:text-white/50
-
-                  outline-none
-                "
+                    h-[60px]
+                    w-full
+                    bg-transparent
+                    px-5
+                    text-white
+                    placeholder:text-white/50
+                    outline-none
+                  "
                 />
 
                 <button
                   className="
-                  mr-3
-                  flex h-10 w-10
-                  items-center justify-center
-
-                  rounded-full
-                  bg-white/10
-
-                  transition-all duration-300
-                  hover:bg-white
-                  hover:text-[#b0004f]
-                "
+                    mr-3
+                    flex h-10 w-10
+                    items-center justify-center
+                    rounded-full
+                    bg-white/10
+                    transition-all duration-300
+                    hover:bg-white
+                    hover:text-[#b0004f]
+                  "
                 >
                   <Send size={16} />
                 </button>
@@ -198,32 +182,11 @@ export default function Footer() {
 
             {/* SUPPORT */}
             <div>
-              
-              <h3
-                className="
-                mb-6
-                text-lg
-                text-white
-              "
-                style={{
-                  fontFamily:
-                    "'Inter', sans-serif",
-                  fontWeight: 700,
-                }}
-              >
+              <h3 className="mb-6 text-lg font-bold">
                 Customer Support
               </h3>
 
-              <div
-                className="
-                space-y-4
-                text-white/80
-              "
-                style={{
-                  fontFamily:
-                    "'Inter', sans-serif",
-                }}
-              >
+              <div className="space-y-4 text-white/80">
                 <a
                   href="tel:7888735541"
                   className="flex items-center gap-3 hover:text-white"
@@ -233,7 +196,7 @@ export default function Footer() {
                 </a>
 
                 <a
-                  href="mailto:Soodmannat902@gmail.com"
+                  href="mailto:support@mannatluxury.com"
                   className="flex items-center gap-3 hover:text-white break-all"
                 >
                   <Mail size={16} />
@@ -249,32 +212,11 @@ export default function Footer() {
 
             {/* SERVICES */}
             <div>
-              
-              <h3
-                className="
-                mb-6
-                text-lg
-                text-white
-              "
-                style={{
-                  fontFamily:
-                    "'Inter', sans-serif",
-                  fontWeight: 700,
-                }}
-              >
+              <h3 className="mb-6 text-lg font-bold">
                 Services
               </h3>
 
-              <ul
-                className="
-                space-y-4
-                text-white/80
-              "
-                style={{
-                  fontFamily:
-                    "'Inter', sans-serif",
-                }}
-              >
+              <ul className="space-y-4 text-white/80">
                 <li>
                   <Link
                     to="/services"
@@ -322,48 +264,21 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* LINKS */}
+            {/* QUICK LINKS */}
             <div>
-              
-              <h3
-                className="
-                mb-6
-                text-lg
-                text-white
-              "
-                style={{
-                  fontFamily:
-                    "'Inter', sans-serif",
-                  fontWeight: 700,
-                }}
-              >
+              <h3 className="mb-6 text-lg font-bold">
                 Quick Links
               </h3>
 
-              <ul
-                className="
-                space-y-4
-                text-white/80
-              "
-                style={{
-                  fontFamily:
-                    "'Inter', sans-serif",
-                }}
-              >
+              <ul className="space-y-4 text-white/80">
                 <li>
-                  <Link
-                    to="/"
-                    className="hover:text-white"
-                  >
+                  <Link to="/" className="hover:text-white">
                     Home
                   </Link>
                 </li>
 
                 <li>
-                  <Link
-                    to="/about"
-                    className="hover:text-white"
-                  >
+                  <Link to="/about" className="hover:text-white">
                     About
                   </Link>
                 </li>
@@ -404,14 +319,14 @@ export default function Footer() {
             <a
               href="#"
               className="
-              flex h-11 w-11 items-center justify-center
-              rounded-full
-              border border-white/20
-              text-white
-              transition-all duration-300
-              hover:bg-white
-              hover:text-[#b0004f]
-            "
+                flex h-11 w-11 items-center justify-center
+                rounded-full
+                border border-white/20
+                text-white
+                transition-all duration-300
+                hover:bg-white
+                hover:text-[#b0004f]
+              "
             >
               <Facebook size={18} />
             </a>
@@ -419,14 +334,14 @@ export default function Footer() {
             <a
               href="#"
               className="
-              flex h-11 w-11 items-center justify-center
-              rounded-full
-              border border-white/20
-              text-white
-              transition-all duration-300
-              hover:bg-white
-              hover:text-[#b0004f]
-            "
+                flex h-11 w-11 items-center justify-center
+                rounded-full
+                border border-white/20
+                text-white
+                transition-all duration-300
+                hover:bg-white
+                hover:text-[#b0004f]
+              "
             >
               <Instagram size={18} />
             </a>
@@ -434,14 +349,14 @@ export default function Footer() {
             <a
               href="#"
               className="
-              flex h-11 w-11 items-center justify-center
-              rounded-full
-              border border-white/20
-              text-white
-              transition-all duration-300
-              hover:bg-white
-              hover:text-[#b0004f]
-            "
+                flex h-11 w-11 items-center justify-center
+                rounded-full
+                border border-white/20
+                text-white
+                transition-all duration-300
+                hover:bg-white
+                hover:text-[#b0004f]
+              "
             >
               <Youtube size={18} />
             </a>
@@ -449,58 +364,114 @@ export default function Footer() {
             <a
               href="#"
               className="
-              flex h-11 w-11 items-center justify-center
-              rounded-full
-              border border-white/20
-              text-white
-              transition-all duration-300
-              hover:bg-white
-              hover:text-[#b0004f]
-            "
+                flex h-11 w-11 items-center justify-center
+                rounded-full
+                border border-white/20
+                text-white
+                transition-all duration-300
+                hover:bg-white
+                hover:text-[#b0004f]
+              "
             >
               <Linkedin size={18} />
-            </a>
-
-            <a
-              href="#"
-              className="
-              flex h-11 w-11 items-center justify-center
-              rounded-full
-              border border-white/20
-              text-white
-              transition-all duration-300
-              hover:bg-white
-              hover:text-[#b0004f]
-            "
-            >
-              <MessageCircle size={18} />
             </a>
           </div>
 
           {/* BOTTOM */}
-          <div
-            className="
-            mt-14
-            border-t border-white/10
-            pt-6
-          "
-          >
-            <p
-              className="
-              text-sm
-              text-white/70
-            "
-              style={{
-                fontFamily:
-                  "'Inter', sans-serif",
-              }}
-            >
+          <div className="mt-14 border-t border-white/10 pt-6">
+            <p className="text-sm text-white/70">
               © {new Date().getFullYear()} Mannat Luxury Events.
               All Rights Reserved.
             </p>
           </div>
         </div>
       </footer>
+
+      {/* ───────── MOBILE FIXED FOOTER ───────── */}
+      <div
+        className="
+          fixed bottom-0 left-0 right-0 z-50
+          border-t border-gray-200
+          bg-white
+          shadow-[0_-5px_30px_rgba(0,0,0,0.08)]
+          lg:hidden
+        "
+      >
+        <div className="grid grid-cols-5">
+          
+          {/* Home */}
+          <Link
+            to="/"
+            className="
+              flex flex-col items-center justify-center
+              py-3 text-[#111]
+            "
+          >
+            <Home size={20} />
+            <span className="mt-1 text-[11px] font-medium">
+              Home
+            </span>
+          </Link>
+
+          {/* Services */}
+          <Link
+            to="/services"
+            className="
+              flex flex-col items-center justify-center
+              py-3 text-[#111]
+            "
+          >
+            <Grid2X2 size={20} />
+            <span className="mt-1 text-[11px] font-medium">
+              Services
+            </span>
+          </Link>
+
+          {/* WhatsApp */}
+          <a
+            href="https://wa.me/917888735541"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              flex flex-col items-center justify-center
+              py-3 text-green-500
+            "
+          >
+            <MessageCircle size={20} />
+            <span className="mt-1 text-[11px] font-medium">
+              Chat
+            </span>
+          </a>
+
+          {/* Gallery */}
+          <Link
+            to="/our-gallery"
+            className="
+              flex flex-col items-center justify-center
+              py-3 text-[#111]
+            "
+          >
+            <Image size={20} />
+            <span className="mt-1 text-[11px] font-medium">
+              Gallery
+            </span>
+          </Link>
+
+          {/* Contact */}
+          <Link
+            to="/contact"
+            className="
+              flex flex-col items-center justify-center
+              py-3 text-[#111]
+            "
+          >
+            <Contact size={20} />
+            <span className="mt-1 text-[11px] font-medium">
+              Contact
+            </span>
+          </Link>
+        </div>
+      </div>
     </>
   );
 }

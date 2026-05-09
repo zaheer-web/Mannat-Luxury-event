@@ -25,6 +25,8 @@ import KidShower from "./layouts/KidShower";
 import SameDay from "./layouts/SameDay";
 import Activity from "./layouts/Activity";
 import Haldi from "./layouts/Haldi";
+import Gift from "./layouts/Gift";
+import Festivals from "./layouts/Festivals";
 
 
 
@@ -53,8 +55,8 @@ function App() {
         <Route path="/gallery/sameday" element={<SameDay/>} />
         <Route path="/gallery/anniversary" element={<Aniversary/>} />
         <Route path="/gallery/babyshower" element={<KidShower/>} />
-        <Route path="gallery/festive" element={<Birthday/>} />
-        <Route path="/gallery/gift" element={<Birthday/>} />
+        <Route path="gallery/festive" element={<Festivals/>} />
+        <Route path="/gallery/gift" element={<Gift/>} />
         <Route path="/gallery/kids" element={<Activity/>} />
         <Route path="/gallery/pre-wedding" element={<Haldi/>} />
 

@@ -13,10 +13,10 @@ import reel3 from "../../assets/fa-10.mp4";
 import reel4 from "../../assets/fa-13.mp4";
 
 const reels = [
-  { video: reel1, label: "Birthday Setup" },
-  { video: reel2, label: "Balloon Decor" },
-  { video: reel3, label: "Anniversary" },
-  { video: reel4, label: "Surprise Entry" },
+  { video: reel1,  },
+  { video: reel2,  },
+  { video: reel3, },
+  { video: reel4, },
 ];
 
 export default function ReelsSection() {
@@ -249,61 +249,10 @@ export default function ReelsSection() {
               <div className="absolute inset-0 bg-black/20" />
 
               {/* Label */}
-              <div className="absolute left-3 top-3 z-20">
-                
-                <span
-                  className="
-                  rounded-full
-                  border border-pink-200
-                  bg-white/90
-
-                  px-3 py-1
-
-                  text-[10px]
-                  uppercase tracking-[3px]
-                  text-pink-500
-
-                  backdrop-blur-md
-                "
-                  style={{
-                    fontFamily:
-                      "'Montserrat', sans-serif",
-                    fontWeight: 700,
-                  }}
-                >
-                  {item.label}
-                </span>
-              </div>
+             
 
               {/* Mute Button */}
-              <button
-                onClick={(e) =>
-                  toggleMute(e, index)
-                }
-                className="
-                absolute right-3 top-3 z-20
-
-                flex h-9 w-9
-                items-center justify-center
-
-                rounded-full
-                border border-white/20
-                bg-white/20
-
-                text-white
-                backdrop-blur-md
-
-                transition-all duration-300
-
-                hover:bg-pink-500
-              "
-              >
-                {mutedIndex.includes(index) ? (
-                  <VolumeX size={14} />
-                ) : (
-                  <Volume2 size={14} />
-                )}
-              </button>
+             
 
               {/* Play Button */}
               <div className="absolute inset-0 z-20 flex items-center justify-center">
